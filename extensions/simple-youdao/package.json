@@ -4,7 +4,7 @@
   "title": "Simple Youdao Translate",
   "description": "This is a Youdao translation extension with simple interaction",
   "icon": "command-icon.png",
-  "author": "xeric",
+  "author": "maotravelle",
   "license": "MIT",
   "commands": [
     {
@@ -972,6 +972,15 @@
       "required": false,
       "title": "Modern Translation Page",
       "description": "by default use Youdao mobile page, check it to show tranlsation page in a modern web page"
+    },
+    {
+      "name": "max_char_limit",
+      "type": "textfield",
+      "required": false,
+      "title": "Max Character Limit",
+      "description": "Maximum characters for translation. Text longer than this will be truncated",
+      "default": "200",
+      "placeholder": "200"
     }
   ],
   "dependencies": {
