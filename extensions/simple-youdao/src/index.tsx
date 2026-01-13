@@ -18,12 +18,12 @@ import fs from "fs";
 import sound from "sound-play";
 import { URLSearchParams } from "url";
 
-// 多语言文案统一管理
+// Unified management of multilingual text
 function getLocalizedText(key: string, language: string, params?: { [key: string]: string | number }): string {
   const langCode = language.includes("2") ? language.split("2")[1] : language.split("2")[0];
 
   const texts: { [key: string]: { [lang: string]: string } } = {
-    // 截断相关文案
+    // Truncation related text
     truncatedMessage: {
       "zh-CHS": `\n\n*(文本过长，已截取前{limit}字符进行翻译)*`,
       en: `\n\n*(Text too long, truncated to first {limit} characters for translation)*`,
@@ -41,7 +41,7 @@ function getLocalizedText(key: string, language: string, params?: { [key: string
       es: "Truncado a los primeros {limit} caracteres",
     },
 
-    // 界面文案
+    // UI text
     translationResult: {
       "zh-CHS": "翻译结果",
       en: "Translation Result",
@@ -110,7 +110,7 @@ function getLocalizedText(key: string, language: string, params?: { [key: string
 
   let text = texts[key]?.[langCode] || texts[key]?.["en"] || key;
 
-  // 替换参数
+  // Replace parameters
   if (params) {
     Object.entries(params).forEach(([paramKey, paramValue]) => {
       text = text.replace(new RegExp(`{${paramKey}}`, "g"), String(paramValue));
@@ -509,7 +509,6 @@ function translateAPI(content: string, signal: AbortSignal): Promise<Response> {
   const q = content;
   const salt = randomUUID();
   const curtime = Math.floor(Date.now() / 1000);
-  content;
   const sign = generateSign(q, salt, curtime, app_key, app_secret);
   const query = new URLSearchParams([
     ["q", q],
